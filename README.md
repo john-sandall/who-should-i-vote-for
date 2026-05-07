@@ -36,6 +36,14 @@ When the brief finishes, the agent will hand you the HTML in chat. Copy it into 
 
 > 💡 **For best results in the chat path,** turn web browsing on in the model's settings. Without it, the agent has to fall back on its training-data knowledge for council records and that's where hallucinations creep in.
 
+### Want to share your brief with friends? Use Netlify Drop.
+
+Once you have `index.html` on your computer, the fastest way to put it on the public internet is [Netlify Drop](https://app.netlify.com/drop). Literally drag the file onto the page in your browser and you get an instant URL like `https://breezy-otter-1234.netlify.app/` to share with anyone.
+
+- **No account needed for a quick test**, but anonymous sites are deleted after 24 hours. Sign up (free) before dragging if you want it to persist and to be able to update it later by dropping new versions in.
+- Drag the *whole folder* (the one containing `index.html` plus the `research/` subfolder) if you want the linked markdown research files to be reachable too. Drag just `index.html` if you don't.
+- Free SSL, free custom subdomain. Good enough for sharing in a group chat or in a comment.
+
 ---
 
 ## Best results: Claude Code CLI + Playwright MCP
