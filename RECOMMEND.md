@@ -1,22 +1,26 @@
-# Prompt — Personalised Bunhill voting recommendation
+# Prompt — Personalised voting recommendation
 
-Paste the block below into a fresh Claude Code session running in this directory (`/Users/john/code/newspeak/who-to-vote-for/`). The agent will run an adaptive questionnaire (using the AskUserQuestion tool, in this chat — not in the HTML), then produce a short personalised recommendation as a markdown file.
+Paste the block below into a fresh Claude Code session (or Claude.ai / ChatGPT chat) running in a directory that already has a built voter brief (i.e. you've already run `PROMPT.md` and have a populated `research/` folder). The agent will run an adaptive questionnaire (using the AskUserQuestion tool where available, otherwise plain numbered questions in chat) and produce a short personalised recommendation as a markdown file.
 
 ---
 
-You are running a personalised voter-recommendation session for **Bunhill ward, Islington (election 7 May 2026)**. The goal is to recommend, *in this chat*, which of the 16 Bunhill candidates best matches the user's actual policy preferences and values — independent of how they'd usually vote nationally.
+> **Note on the tooling.** This prompt was authored for Claude Code, which has filesystem access. **It also runs in any other capable AI agent (Claude.ai, ChatGPT, OpenAI Codex CLI, etc.).** When running in a tool without filesystem access, simply output the final markdown directly into the chat at the end so the user can copy it. The questionnaire flow itself is identical regardless of tool. If you don't have an `AskUserQuestion`-equivalent tool, present each round of multiple-choice questions as a numbered list in the chat and wait for the user to reply with their picks.
+>
+> **Important: the brief must exist first.** This prompt expects to find `research/` files for the ward in question (created by [`PROMPT.md`](PROMPT.md)). If `research/` is empty or absent, halt and tell the user to run the brief prompt first.
+
+You are running a personalised voter-recommendation session for a UK council ward whose research already lives in this directory's `research/` folder (built by `PROMPT.md`). The goal is to recommend, *in this chat*, which candidate(s) on the user's ballot best match their actual policy preferences and values — independent of how they'd usually vote nationally.
 
 ## Step 1 — Ground yourself before asking anything
 
-Before the first question, read these files in this order:
+Before the first question, read these files in this order to learn the ward, election date, seat count, and full candidate / party landscape:
 
-1. `research/README.md` — the dossier index
-2. `research/candidates/bunhill.md` — every candidate
-3. `research/parties/labour.md`, `greens.md`, `lib-dems.md`, `conservatives.md`, `ici.md`, `reform-uk.md`, `sdp.md`
-4. `research/scorecard.md` — Labour's record
+1. `research/README.md` — the dossier index. This tells you which ward, what election date, how many seats, what parties are standing.
+2. `research/candidates/*.md` — every candidate, in ballot order
+3. `research/parties/*.md` — one file per party fielding candidates
+4. `research/scorecard.md` — the incumbent administration's record
 5. `index.html` — to see the consolidated framing already in front of the user
 
-Build a **policy-by-issue matrix** keyed on the *issue* and *concrete policy*, not on the party. For each of the issues below, list which specific policies appear in which candidates'/parties' platforms (and which candidates have no stated position). Issues to cover: phone-snatching/moped-theft response, anti-social-behaviour enforcement, policing model (visible police vs council patrols vs prevention), council housing supply, council housing repairs / Housing Ombudsman record, renter regulation (licensing scope, rent controls), leaseholder/cladding/"fleecehold" support, LTNs / school streets / cycle lanes, cycle hangars, hire-bike scheme reform (Lime/Forest), EV charging rollout, council-home retrofit, pension-fund divestment, council tax level, youth services / mental health, democratic accountability / scrutiny, Islington residency of the candidate.
+Build a **policy-by-issue matrix** keyed on the *issue* and *concrete policy*, not on the party. For each issue surfaced in the local research, list which specific policies appear in which candidates'/parties' platforms (and which candidates have no stated position). Cover both the universals — housing supply, repairs, renter regulation, transport / streets / cycling, climate and retrofit, council tax, crime / policing, youth services, democratic accountability, candidate's residency in the ward — and any locally-specific issues the brief flags (e.g. specific LTNs, leaseholder cladding, hire-bike scheme reform, ombudsman rulings, divestment debates).
 
 This matrix is your only basis for matching answers to candidates. Do not invent positions a candidate hasn't taken — if a position is unknown for a minor-party candidate, weight that as uncertainty in the final score, not as a default.
 
@@ -55,20 +59,20 @@ Before round 3, briefly tell the user where you currently stand on the score and
 If yes, ask up to 5 questions covering whatever's still ambiguous. Useful probes:
 - **Personal context that changes weighting.** Does the user cycle? Drive? Have school-age kids? Rent or own? Plan to become a landlord? Have a leasehold flat affected by cladding? These shift which policies actually affect them and should reweight the score, not just nuance the language.
 - **Slate shape:** all-one-party vs split ticket vs let-the-score-decide.
-- **Hard filters:** Islington/ward residency requirement, view on the sitting independent councillor (without naming them as "ICI" or "ex-Labour" — describe the situation in plain English).
+- **Hard filters:** ward-residency requirement (some candidates may live outside the ward — surface this as plain English without partisan framing), view on any sitting defectors / independents (describe the situation neutrally without naming the party they left).
 - **Confidence threshold:** how strong does a recommendation need to be before they'd act on it.
 
 You may run a fourth round only if the user explicitly requests it, or if their round-3 answers materially shift the score.
 
 ## Step 3 — Score and recommend
 
-After the questionnaire ends, score each of the 16 candidates against the user's stated preferences. Use a transparent rubric: assign each issue a weight from the user's multi-select picks (a policy picked = positive weight; a policy *available but not picked* = neutral; opposite picks contradict), score each candidate's *party platform* on each issue (positive / neutral / negative / unknown), aggregate. Show the *reasoning*, not just the numbers.
+After the questionnaire ends, score each candidate on the ballot against the user's stated preferences. Use a transparent rubric: assign each issue a weight from the user's multi-select picks (a policy picked = positive weight; a policy *available but not picked* = neutral; opposite picks contradict), score each candidate's *party platform* on each issue (positive / neutral / negative / unknown), aggregate. Show the *reasoning*, not just the numbers.
 
 **Score by policy alignment, not by party allegiance.** Do not let the user's earlier "I'd lean to plurality" or "I usually vote X nationally" answer override clear policy mismatches. If the policy fingerprint points to a party the user might not have expected, say so plainly — that's the point of running this in plain-English-no-party-labels mode.
 
 Then pick:
-- A **best-fit single vote** (who they should vote for if they only used one of their three votes)
-- A recommended **set of up to three votes** (since Bunhill elects 3 and voters cast up to 3)
+- A **best-fit single vote** (who they should vote for if they only used one of their N votes, where N is the seat count for this ward)
+- A recommended **set of up to N votes** (use the seat count from `research/README.md`; many UK wards elect 3, some 2, some 1)
 - A clearly explained alternative if their tactical / national-signal answer pulls a different way, or if the strongest policy match is on candidates with limited public profile
 
 If none of the candidates is a strong match, say so honestly. If the strongest policy match is on a party whose candidates have no public profile, flag it as a values-bet not a person-bet, and offer a more conservative alternative.
@@ -78,7 +82,7 @@ If none of the candidates is a strong match, say so honestly. If the strongest p
 Write the result to `recommendations/<firstname>.md` (create the `recommendations/` folder if missing; ask the user for a first name to namespace the file — needed because we'll run this for multiple people in the same repo). Keep it **easy to consume** — not detailed. Suggested shape, kept short:
 
 ```markdown
-# Voting brief for <name> · Bunhill, 7 May 2026
+# Voting brief for <name> · <ward>, <election date>
 
 ## Your priorities, in your own words
 Three or four lines summarising what they told you.

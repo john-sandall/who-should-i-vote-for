@@ -1,8 +1,10 @@
-# Prompt — Build a voter's brief for any Islington ward (or any UK council ward)
+# Prompt — Build a voter's brief for any UK council ward
 
-Paste the block below into a new Claude Code session running in this directory (`/Users/john/code/newspeak/who-to-vote-for/`). It's self-contained and asks you for a ward or postcode before doing anything.
+Paste the block below into a fresh Claude Code session (or Claude.ai / ChatGPT chat with web browsing enabled) running in an empty or near-empty folder. The prompt is self-contained and asks you for a ward or postcode before doing anything else.
 
 ---
+
+> **Note on the tooling.** This prompt was authored for Claude Code with Playwright MCP and Bash tools, where the agent has filesystem access and can drive a real browser. **It also runs in any other capable AI agent (Claude.ai, ChatGPT, OpenAI Codex CLI, etc.).** When running in a different tool, substitute equivalent capabilities: use whatever web browsing tool you have for fetches, your code-execution sandbox for PDF text extraction, and your filesystem if available (or in-chat output of the final files if not). The source-hierarchy and anti-hallucination rules below apply regardless of which tool is running you.
 
 You are building a non-partisan, deeply-researched, single-page voter's brief for a UK local council election ward, paired with long-form markdown research files.
 
