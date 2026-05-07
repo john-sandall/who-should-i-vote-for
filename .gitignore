@@ -1,0 +1,14 @@
+# Personal recommendation outputs (each user's private voting brief)
+recommendations/
+
+# macOS
+.DS_Store
+
+# Playwright MCP scratch
+.playwright-mcp/
+
+# Editor / OS
+*.swp
+*.swo
+.idea/
+.vscode/

@@ -1,0 +1,1653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bunhill 2026 · A Voter's Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,200..900,0..100,0..1;1,9..144,200..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+<style>
+/* ---------------------------------------------------------------- */
+/* civic broadsheet · bunhill 2026                                  */
+/* ---------------------------------------------------------------- */
+
+:root {
+  --paper:        #f1ebde;
+  --paper-2:      #e8e0cd;
+  --ink:          #181410;
+  --ink-2:        #4a3f30;
+  --ink-soft:     #6b5e4b;
+  --rule:         #c5b89c;
+  --rule-soft:    #d8cfb7;
+  --accent:       #d63d2c;     /* election red-orange */
+  --accent-soft:  rgba(214, 61, 44, 0.08);
+  --gold:         #c8a662;
+  --highlight:    rgba(200, 166, 98, 0.18);
+
+  --lab:          #c8102e;
+  --grn:          #4f8a2b;
+  --lib:          #e8a30b;
+  --con:          #1f5fa3;
+  --ref:          #15a8c1;
+  --ici:          #6e4cb0;
+  --sdp:          #6f6759;
+
+  --display:      "Fraunces", "Iowan Old Style", Georgia, serif;
+  --body:         "Newsreader", "Iowan Old Style", Georgia, serif;
+  --mono:         "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --max:          1140px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  font-feature-settings: "ss01", "ss02", "kern", "liga";
+}
+
+/* paper grain — sits under everything */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+.page { position: relative; z-index: 1; }
+
+/* layout */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 36px; }
+@media (max-width: 700px) { .wrap { padding: 0 22px; } }
+
+/* fonts: small caps mono labels */
+.kicker {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+a { color: inherit; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+
+/* ============================================================== */
+/* MASTHEAD                                                       */
+/* ============================================================== */
+
+.masthead {
+  border-top: 8px solid var(--ink);
+  padding-top: 22px;
+}
+.dateline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px double var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.dateline .l { text-align: left; }
+.dateline .c { text-align: center; }
+.dateline .r { text-align: right; }
+.dateline strong { font-weight: 700; }
+
+.title {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  font-size: clamp(56px, 11.5vw, 168px);
+  line-height: 0.85;
+  margin: 32px 0 14px;
+  color: var(--ink);
+}
+.title em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.standfirst {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.45;
+  max-width: 56ch;
+  color: var(--ink-2);
+  margin: 0 0 14px;
+}
+
+.byline {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 10px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 26px 0 0;
+}
+.byline span { color: var(--ink-2); }
+.byline strong { color: var(--ink); }
+
+/* polling-day prominent banner */
+.bulletin {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 22px;
+  margin: 28px 0 0;
+  padding: 22px 28px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.bulletin::before {
+  content: "POLLING · POLLING · POLLING · POLLING · POLLING · POLLING · POLLING ·";
+  position: absolute; top: -22px; left: 0; right: 0;
+  font-family: var(--display); font-style: italic; font-weight: 300;
+  font-size: 90px; opacity: 0.06;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: -0.02em;
+}
+.bulletin .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6; }
+.bulletin .now {
+  font-family: var(--display); font-style: italic;
+  font-variation-settings: "opsz" 96, "SOFT" 50, "WONK" 1;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  margin-top: 4px;
+}
+.bulletin .when {
+  text-align: right;
+  font-family: var(--mono); font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.bulletin .when b { color: var(--accent); }
+
+/* table of contents — sticky */
+nav.toc {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  margin: 0;
+  background: var(--paper);
+  background: linear-gradient(var(--paper) 88%, transparent);
+  border-bottom: 1px solid var(--rule);
+}
+nav.toc .inner {
+  display: flex; flex-wrap: wrap; gap: 4px 26px;
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+nav.toc a {
+  text-decoration: none;
+  padding: 4px 0;
+  color: var(--ink-2);
+  position: relative;
+}
+nav.toc a:hover { color: var(--accent); }
+
+/* ============================================================== */
+/* SECTIONS                                                       */
+/* ============================================================== */
+
+section { padding: 88px 0 24px; }
+section + section { border-top: 1px solid var(--rule); }
+
+.h-section {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 18px;
+  align-items: baseline;
+  margin: 0 0 10px;
+}
+.h-section .num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  border-top: 2px solid var(--accent);
+  padding-top: 8px;
+}
+.h-section h2 {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 30, "WONK" 0;
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.h-section h2 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 96, "SOFT" 100, "WONK" 1;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.h-section .standfirst { margin-top: 14px; }
+
+p.lead { font-size: 19px; max-width: 65ch; }
+p.lead::first-letter {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 700;
+  font-size: 4em;
+  float: left;
+  line-height: 0.85;
+  margin: 6px 12px 0 0;
+  color: var(--accent);
+}
+
+/* big stat tiles */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  margin: 28px 0 6px;
+  border: 1px solid var(--ink);
+  background: var(--paper-2);
+}
+.stats .stat {
+  padding: 22px 18px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.stats .stat:nth-child(6n) { border-right: 0; }
+.stats .stat:nth-last-child(-n+1) { border-bottom: 0; }
+.stats .stat .n {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0;
+  font-weight: 600;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.stats .stat .n em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  color: var(--accent);
+}
+.stats .stat .l {
+  margin-top: 6px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+@media (max-width: 880px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .stats .stat:nth-child(6n) { border-right: 1px solid var(--rule); }
+  .stats .stat:nth-child(3n) { border-right: 0; }
+}
+@media (max-width: 540px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stats .stat:nth-child(3n), .stats .stat { border-right: 1px solid var(--rule); }
+  .stats .stat:nth-child(2n) { border-right: 0; }
+}
+
+/* pull-quote */
+.pull {
+  margin: 32px 0 8px;
+  padding: 26px 30px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--accent);
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 96, "SOFT" 100, "WONK" 1;
+  font-weight: 350;
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.4;
+  color: var(--ink);
+  position: relative;
+}
+.pull::before {
+  content: "“";
+  position: absolute;
+  top: -10px; left: 12px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 110px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.3;
+}
+.pull cite {
+  display: block;
+  margin-top: 12px;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ============================================================== */
+/* CANDIDATES — ballot card style                                 */
+/* ============================================================== */
+
+.filterbar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 22px 0 26px;
+  align-items: center;
+  padding-top: 22px;
+  border-top: 1px dashed var(--rule);
+}
+.filterbar .lbl {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: 10px;
+}
+.pill {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 7px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+.pill:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 var(--ink); }
+.pill.active { background: var(--ink); color: var(--paper); }
+.pill .dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--c, var(--ink));
+  margin-right: 6px; vertical-align: middle;
+}
+
+/* the cards: each is a "ballot stub" */
+.cards {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+.card {
+  --c: var(--ink);
+  position: relative;
+  padding: 20px 22px 22px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  display: flex; flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.card.hidden { display: none; }
+
+/* ballot tear strip */
+.card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: var(--c);
+}
+/* the "X" mark overlay shown on hover */
+.card .xmark {
+  position: absolute;
+  top: 16px; right: 18px;
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.card .xmark::after {
+  content: "✕";
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card:hover .xmark::after { opacity: 1; }
+.card:hover .xmark { background: var(--accent-soft); transform: rotate(4deg); }
+
+.card h3 {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.05;
+  margin: 0 64px 4px 0;
+  letter-spacing: -0.01em;
+}
+.card .surname {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+.card .party {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 4px 8px;
+  border: 1px solid var(--c);
+  border-left-width: 4px;
+  margin: 6px 0 12px;
+  align-self: flex-start;
+}
+.card .badge {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 7px;
+  margin-left: 6px;
+  display: inline-block;
+}
+.card .badge.first {
+  background: var(--accent);
+}
+.card .badge.warn {
+  background: var(--gold);
+  color: var(--ink);
+}
+.card .bio {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
+.card .flag {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.note {
+  margin: 24px 0 4px;
+  padding: 18px 22px;
+  background: var(--highlight);
+  border: 1px solid var(--gold);
+  font-size: 15.5px;
+  font-style: italic;
+  font-family: var(--body);
+}
+.note strong {
+  font-style: normal;
+  font-family: var(--display);
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* ============================================================== */
+/* PARTY DEEP-DIVES                                               */
+/* ============================================================== */
+
+details.party {
+  --c: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  margin: 14px 0;
+  position: relative;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+details.party:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+details.party::before {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: 0;
+  width: 6px; background: var(--c);
+}
+details.party > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 26px 22px 36px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+}
+details.party > summary::-webkit-details-marker { display: none; }
+details.party > summary h3 {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 20;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+details.party > summary h3 span {
+  font-style: italic;
+  font-variation-settings: "opsz" 72, "SOFT" 100, "WONK" 1;
+  font-weight: 400;
+  color: var(--c);
+}
+details.party > summary .meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+details.party > summary .chev {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  align-self: center;
+  border: 1px solid var(--ink);
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+details.party[open] > summary .chev { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+details.party[open] > summary .chev::after { content: " ▴"; }
+details.party:not([open]) > summary .chev::after { content: " ▾"; }
+
+details.party .body {
+  padding: 0 26px 26px 36px;
+  border-top: 1px dashed var(--rule);
+  margin-top: 4px;
+}
+details.party .body h4 {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 30;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  margin: 22px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+details.party .body ul { margin: 0; padding-left: 22px; }
+details.party .body li { margin: 5px 0; }
+details.party .body li strong { color: var(--accent); font-weight: 600; }
+details.party .body .quote {
+  margin: 18px 0;
+  padding: 16px 18px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--c);
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 24, "SOFT" 100, "WONK" 1;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.45;
+}
+details.party .body .quote .src {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-variation-settings: normal;
+}
+details.party .body p a { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* ============================================================== */
+/* SCORECARD — examiner's report                                  */
+/* ============================================================== */
+
+.report {
+  margin: 26px 0 6px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+.report .head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 14px;
+  padding: 22px 26px 14px;
+  border-bottom: 2px double var(--ink);
+}
+.report .head h3 {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 0;
+  font-weight: 700;
+  font-size: clamp(26px, 3.4vw, 36px);
+  line-height: 1;
+  margin: 0;
+}
+.report .head h3 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 72, "SOFT" 100, "WONK" 1;
+  font-weight: 400;
+  color: var(--accent);
+}
+.report .head .stamp {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: right;
+  line-height: 1.5;
+}
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  padding: 14px 26px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.legend span b { color: var(--ink); }
+
+table.score {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--body);
+  font-size: 15.5px;
+}
+table.score th, table.score td {
+  padding: 14px 26px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+}
+table.score th {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--paper-2);
+  font-weight: 500;
+}
+table.score td.mark {
+  width: 80px;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 48;
+  font-size: 28px;
+}
+table.score td.mark.green { color: #2f7a1c; }
+table.score td.mark.amber { color: #b9740a; }
+table.score td.mark.red   { color: var(--accent); }
+table.score td.mark.gray  { color: var(--ink-soft); }
+table.score tr:hover td { background: var(--accent-soft); }
+
+.summary-quote {
+  margin: 16px 0 0;
+  padding: 22px 26px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.summary-quote strong { font-style: normal; color: var(--gold); font-weight: 700; display: inline-block; margin-right: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* ============================================================== */
+/* POLLING CHART                                                  */
+/* ============================================================== */
+
+.poll-grid {
+  margin: 26px 0 0;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 22px 26px;
+}
+.poll-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 130px;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.poll-row:last-child { border-bottom: 0; }
+.poll-row .name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  font-variation-settings: "opsz" 24;
+}
+.poll-row .bars {
+  position: relative;
+  height: 22px;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.poll-row .bars .y22 {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: var(--c);
+  z-index: 2;
+}
+.poll-row .bars .y26 {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: var(--c);
+  opacity: 0.35;
+  z-index: 1;
+  border-right: 2px dashed var(--paper);
+}
+.poll-row .num {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  text-align: right;
+}
+.poll-row .num em {
+  font-style: normal;
+  display: block;
+  color: var(--accent);
+  font-weight: 600;
+}
+.poll-legend {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  margin-top: 14px;
+  font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.poll-legend i {
+  display: inline-block; width: 22px; height: 10px; vertical-align: middle;
+  background: var(--ink);
+  margin-right: 6px;
+}
+.poll-legend i.faded { opacity: 0.35; }
+
+@media (max-width: 700px) {
+  .poll-row { grid-template-columns: 90px 1fr 100px; gap: 10px; }
+  .poll-row .name { font-size: 15px; }
+}
+
+/* ============================================================== */
+/* POLLING STATIONS                                               */
+/* ============================================================== */
+
+.stations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 26px;
+}
+.stations .st {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 18px 20px;
+}
+.stations .st .num {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 100, "WONK" 1;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 0.85;
+  color: var(--accent);
+}
+.stations .st h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 19px;
+  margin: 8px 0 4px;
+  line-height: 1.1;
+}
+.stations .st p {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+@media (max-width: 700px) { .stations { grid-template-columns: 1fr; } }
+
+/* ============================================================== */
+/* SOURCES                                                        */
+/* ============================================================== */
+
+.src-list {
+  columns: 2;
+  column-gap: 36px;
+  font-family: var(--body);
+  font-size: 14.5px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.src-list li {
+  break-inside: avoid;
+  padding: 6px 0 6px 22px;
+  border-bottom: 1px dashed var(--rule);
+  position: relative;
+}
+.src-list li::before {
+  content: "§";
+  position: absolute; left: 0; top: 6px;
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+@media (max-width: 700px) { .src-list { columns: 1; } }
+
+/* ============================================================== */
+/* IMPRINT FOOTER                                                 */
+/* ============================================================== */
+
+.imprint {
+  margin-top: 56px;
+  padding: 36px 0 56px;
+  border-top: 8px solid var(--ink);
+}
+.imprint .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+@media (max-width: 700px) { .imprint .row { grid-template-columns: 1fr; } }
+.imprint h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.imprint p {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  margin: 0 0 8px;
+}
+.imprint .sig {
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--accent);
+  margin-top: 18px;
+}
+
+/* ============================================================== */
+/* ENTRANCE ANIMATIONS                                            */
+/* ============================================================== */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.title, .standfirst, .byline, .bulletin { animation: rise 0.7s 0.05s both ease-out; }
+.standfirst { animation-delay: 0.18s; }
+.byline { animation-delay: 0.28s; }
+.bulletin { animation-delay: 0.38s; }
+
+/* reveal on intersection */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* selection */
+::selection { background: var(--accent); color: var(--paper); }
+
+</style>
+</head>
+<body>
+<div class="page">
+<div class="wrap">
+
+<!-- ============================================================ -->
+<!-- MASTHEAD                                                     -->
+<!-- ============================================================ -->
+<header class="masthead">
+
+  <div class="dateline">
+    <div class="l">Vol. I &nbsp; · &nbsp; No. 1</div>
+    <div class="c">A non-partisan voter's brief</div>
+    <div class="r"><strong>Thursday, 7 May 2026</strong></div>
+  </div>
+
+  <h1 class="title">Bunhill <em>2026</em></h1>
+
+  <p class="standfirst">A neutral, sourced guide to the sixteen candidates standing for three seats on Islington Council in the Bunhill ward — assembled from manifestos, the Statement of Persons Nominated, the Housing Ombudsman, council records, and local reporting. No party allegiance. No questionnaire (yet).</p>
+
+  <div class="byline">
+    <span><strong>Ward:</strong>&nbsp; Bunhill</span>
+    <span><strong>Council:</strong>&nbsp; London Borough of Islington</span>
+    <span><strong>Seats up:</strong>&nbsp; 3</span>
+    <span><strong>Candidates:</strong>&nbsp; 16</span>
+    <span><strong>Polls:</strong>&nbsp; 07:00 – 22:00</span>
+  </div>
+
+  <div class="bulletin">
+    <div>
+      <div class="lbl">Polling-day bulletin</div>
+      <div class="now">Today is the day. Don't forget photo ID.</div>
+    </div>
+    <div class="when">
+      Three votes<br />
+      Three seats<br />
+      <b>One ward</b>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="inner">
+  <a href="#overview">§ Overview</a>
+  <a href="#candidates">§ The 16</a>
+  <a href="#parties">§ The Parties</a>
+  <a href="#scorecard">§ Council Scorecard</a>
+  <a href="#poll">§ Polling</a>
+  <a href="#where">§ Where to Vote</a>
+  <a href="#sources">§ Sources</a>
+</div></nav>
+
+<!-- ============================================================ -->
+<!-- OVERVIEW                                                     -->
+<!-- ============================================================ -->
+<section id="overview" data-reveal>
+  <div class="h-section">
+    <div class="num">§ I — The frame</div>
+    <h2>Three seats. <em>Sixteen candidates.</em><br/>One ward.</h2>
+  </div>
+
+  <p class="lead">Bunhill ward elects three councillors. You get three votes — but you don't have to use all three; they can be split across parties. The current three Bunhill councillors were all elected as Labour in 2022. One of them, Phil Graham, was suspended from Labour in May 2024 for backing Jeremy Corbyn's independent campaign in Islington North; he formally resigned on 25 July 2024 over the two-child benefit cap vote, and stands again here as an Islington Community Independent.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n">16</div><div class="l">Candidates standing in Bunhill</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">Seats up for election</div></div>
+    <div class="stat"><div class="n">7</div><div class="l">Parties &amp; groups represented</div></div>
+    <div class="stat"><div class="n"><em>30.3%</em></div><div class="l">2022 turnout · lowest in the borough</div></div>
+    <div class="stat"><div class="n">51</div><div class="l">Total Islington council seats</div></div>
+    <div class="stat"><div class="n">26</div><div class="l">Seats needed for majority</div></div>
+  </div>
+
+  <div class="pull">
+    Labour has run Islington since 2010 and won 48 of 51 seats in 2022. PollCheck's 2026 projection has Labour holding power but losing roughly 16 seats — almost all to a surging Green Party that's projected to grow from 3 seats to ~20. Bunhill is not in the top-five marginal wards, but turnout effects in a low-turnout ward can still produce surprises.
+    <cite>— PollCheck projections, 2026</cite>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CANDIDATES                                                   -->
+<!-- ============================================================ -->
+<section id="candidates" data-reveal>
+  <div class="h-section">
+    <div class="num">§ II — The ballot</div>
+    <h2>Sixteen names, in <em>ballot order</em></h2>
+  </div>
+  <p class="lead">Listed alphabetically by surname — exactly as they will appear on your ballot paper. Filter by party. Bios are drawn from the candidates' own materials, the Islington Council democracy register, and the Statement of Persons Nominated. "No public profile located" means the party has not published one or it was not findable in this research — that gap is information in itself.</p>
+
+  <div class="filterbar" id="filterbar">
+    <span class="lbl">Filter</span>
+    <button class="pill active" data-party="all">All sixteen</button>
+    <button class="pill" data-party="labour"><span class="dot" style="--c:var(--lab)"></span>Labour</button>
+    <button class="pill" data-party="green"><span class="dot" style="--c:var(--grn)"></span>Green</button>
+    <button class="pill" data-party="libdem"><span class="dot" style="--c:var(--lib)"></span>Lib Dem</button>
+    <button class="pill" data-party="conservative"><span class="dot" style="--c:var(--con)"></span>Conservative</button>
+    <button class="pill" data-party="reform"><span class="dot" style="--c:var(--ref)"></span>Reform UK</button>
+    <button class="pill" data-party="ici"><span class="dot" style="--c:var(--ici)"></span>ICI</button>
+    <button class="pill" data-party="sdp"><span class="dot" style="--c:var(--sdp)"></span>SDP</button>
+  </div>
+
+  <div class="cards" id="cards">
+    <div class="card" style="--c:var(--con)" data-party="conservative">
+      <div class="xmark"></div>
+      <h3>Sara Abey</h3>
+      <div class="surname">ABEY · ballot #1</div>
+      <span class="party"><span class="dot" style="background:var(--con)"></span>Conservative</span>
+      <p class="bio">No public profile located. Ask the candidate or the Conservative Federation directly.</p>
+    </div>
+
+    <div class="card" style="--c:var(--lib)" data-party="libdem">
+      <div class="xmark"></div>
+      <h3>George Edwin Allan</h3>
+      <div class="surname">ALLAN · ballot #2</div>
+      <span class="party"><span class="dot" style="background:var(--lib)"></span>Liberal Democrats</span>
+      <p class="bio">Listed home address: 66 Prebend Street, N1 8PS (Canonbury area, just north of the ward). No further public profile located.</p>
+    </div>
+
+    <div class="card" style="--c:var(--lib)" data-party="libdem">
+      <div class="xmark"></div>
+      <h3>Susan Beveridge</h3>
+      <div class="surname">BEVERIDGE · ballot #3</div>
+      <span class="party"><span class="dot" style="background:var(--lib)"></span>Liberal Democrats</span>
+      <p class="bio">No public profile located. Proposed Allan and Kenny on the Lib Dem ticket — clearly the local organiser of the slate.</p>
+    </div>
+
+    <div class="card" style="--c:var(--lab)" data-party="labour">
+      <div class="xmark"></div>
+      <h3>Valerie Bossman-Quarshie <span class="badge">Incumbent</span></h3>
+      <div class="surname">BOSSMAN-QUARSHIE · ballot #4</div>
+      <span class="party"><span class="dot" style="background:var(--lab)"></span>Labour · since 2021</span>
+      <p class="bio">Lifelong Islingtonian. Topped the 2022 Bunhill poll with 61.5%. YMCA Trustee and St Luke's Community Trust Trustee. Governor at Moreland and St Luke's CoE schools. Focus: family opportunity, education, neighbourhood services.</p>
+    </div>
+
+    <div class="card" style="--c:var(--con)" data-party="conservative">
+      <div class="xmark"></div>
+      <h3>Paul James Carr</h3>
+      <div class="surname">CARR · ballot #5</div>
+      <span class="party"><span class="dot" style="background:var(--con)"></span>Conservative</span>
+      <p class="bio">No public profile located. Seconded Abey's and Shovel's nomination papers — appears to be the Conservative slate organiser locally.</p>
+    </div>
+
+    <div class="card" style="--c:var(--grn)" data-party="green">
+      <div class="xmark"></div>
+      <h3>Alan Clark-Gutiérrez <span class="badge first">First choice</span></h3>
+      <div class="surname">CLARK GUTIERREZ · ballot #6</div>
+      <span class="party"><span class="dot" style="background:var(--grn)"></span>Green · lead candidate</span>
+      <p class="bio">Designated as the Greens' "first choice candidate" on the official ballot. ~2.5 years in Bunhill, completing a Masters in Aerospace Engineering. Young Greens Officer for Islington; Co-Chair of London Young Greens. Pitch: scrutinise planning, transport, housing committees and "do the vital admin to keep our Green group punching above its weight."</p>
+    </div>
+
+    <div class="card" style="--c:var(--lab)" data-party="labour">
+      <div class="xmark"></div>
+      <h3>Troy Gallagher <span class="badge">Incumbent</span></h3>
+      <div class="surname">GALLAGHER · ballot #7</div>
+      <span class="party"><span class="dot" style="background:var(--lab)"></span>Labour · long-serving</span>
+      <p class="bio">25 years in the Bunhill community. Islington's first Irish-born Mayor. Won Bunhill 2022 with 56.6%. Pitch: social housing, lettings policy for resident stability, youth investment.</p>
+    </div>
+
+    <div class="card" style="--c:var(--ici)" data-party="ici">
+      <div class="xmark"></div>
+      <h3>Phil Graham <span class="badge">Incumbent · ex-Labour</span></h3>
+      <div class="surname">GRAHAM · ballot #8</div>
+      <span class="party"><span class="dot" style="background:var(--ici)"></span>Islington Community Independents · for the Many</span>
+      <p class="bio">Sitting Bunhill councillor since 2018; elected as Labour 2022 with 50.9%. Suspended from Labour May 2024 for backing Corbyn; resigned 25 July 2024 over the two-child cap vote. Sits on 11 council committees including Environment / Climate / Transport Scrutiny and Licensing. The only candidate with a public voting record from this term.</p>
+    </div>
+
+    <div class="card" style="--c:var(--lib)" data-party="libdem">
+      <div class="xmark"></div>
+      <h3>John Kenny</h3>
+      <div class="surname">KENNY · ballot #9</div>
+      <span class="party"><span class="dot" style="background:var(--lib)"></span>Liberal Democrats</span>
+      <p class="bio">No public profile located.</p>
+    </div>
+
+    <div class="card" style="--c:var(--grn)" data-party="green">
+      <div class="xmark"></div>
+      <h3>Ava Lie</h3>
+      <div class="surname">LIE · ballot #10</div>
+      <span class="party"><span class="dot" style="background:var(--grn)"></span>Green</span>
+      <p class="bio">Listed at 9 Lexington Apartments, 40 City Road, EC1Y 2AN (Bunhill). Moved to Islington August 2025; background in International Relations. Local focus: timely, accurate response for those in council housing. "Green voices are required to push against the Labour Party's complacency."</p>
+    </div>
+
+    <div class="card" style="--c:var(--sdp)" data-party="sdp">
+      <div class="xmark"></div>
+      <h3>Jake Anthony Painter</h3>
+      <div class="surname">PAINTER · ballot #11</div>
+      <span class="party"><span class="dot" style="background:var(--sdp)"></span>Social Democratic Party</span>
+      <p class="bio">Islington born and raised. University of Essex alumnus. Works "in the policy space". Also the SDP's prospective parliamentary candidate for Islington South &amp; Finsbury.</p>
+    </div>
+
+    <div class="card" style="--c:var(--lab)" data-party="labour">
+      <div class="xmark"></div>
+      <h3>Kiran Prasad</h3>
+      <div class="surname">PRASAD · ballot #12</div>
+      <span class="party"><span class="dot" style="background:var(--lab)"></span>Labour · new</span>
+      <p class="bio">25-year Bunhill resident. Primary school governor; trustee of a local volunteering charity. Says she has championed tenants' rights and challenged unfair service charges. National children's policy researcher. Replaces Phil Graham on the Labour ticket.</p>
+    </div>
+
+    <div class="card" style="--c:var(--con)" data-party="conservative">
+      <div class="xmark"></div>
+      <h3>David Shovel</h3>
+      <div class="surname">SHOVEL · ballot #13</div>
+      <span class="party"><span class="dot" style="background:var(--con)"></span>Conservative</span>
+      <p class="bio">No public profile located.</p>
+    </div>
+
+    <div class="card" style="--c:var(--ref)" data-party="reform">
+      <div class="xmark"></div>
+      <h3>David Small</h3>
+      <div class="surname">SMALL · ballot #14</div>
+      <span class="party"><span class="dot" style="background:var(--ref)"></span>Reform UK</span>
+      <p class="bio">No public profile located. Reform UK have not published a local Islington manifesto.</p>
+    </div>
+
+    <div class="card" style="--c:var(--grn)" data-party="green">
+      <div class="xmark"></div>
+      <h3>David John Wade <span class="badge warn">Croydon address</span></h3>
+      <div class="surname">WADE · ballot #15</div>
+      <span class="party"><span class="dot" style="background:var(--grn)"></span>Green</span>
+      <p class="bio">Chartered Accountant. Worked across charities, public bodies, a lobbying firm, and a local authority. Trustee of an Islington-based social justice charity. Local focus: cleaner streets, safer roads, greener spaces, warm and affordable homes.</p>
+      <p class="flag">Listed home address: London Borough of Croydon</p>
+    </div>
+
+    <div class="card" style="--c:var(--ref)" data-party="reform">
+      <div class="xmark"></div>
+      <h3>Andrew Watson</h3>
+      <div class="surname">WATSON · ballot #16</div>
+      <span class="party"><span class="dot" style="background:var(--ref)"></span>Reform UK</span>
+      <p class="bio">No public profile located.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>A note on transparency.</strong> Where it says "no public profile located", the candidate's own party has either not published a local biography or it was not findable in public sources. Local visibility tends to predict effective casework — so that gap is itself a signal worth weighing.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PARTIES                                                      -->
+<!-- ============================================================ -->
+<section id="parties" data-reveal>
+  <div class="h-section">
+    <div class="num">§ III — The platforms</div>
+    <h2>What each party is <em>actually offering</em></h2>
+  </div>
+  <p class="lead">Each block opens to the party's headline 2026 commitments, distilled to ~10 testable pledges where possible. Click to expand. Long-form research lives in <code>research/</code> alongside this page.</p>
+
+  <details class="party" style="--c:var(--lab)">
+    <summary>
+      <div>
+        <h3>Labour <span>· five missions</span></h3>
+        <div class="meta">Incumbent · 44 / 51 current seats · Cllr Una O'Halloran (Leader since Nov 2024)</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <h4>The five missions</h4>
+      <ul>
+        <li>Decent, secure, genuinely affordable homes for every resident</li>
+        <li>A safer, cleaner, healthier borough</li>
+        <li>Tackle cost of living, support local business</li>
+        <li>A great place to grow up and grow old</li>
+        <li>Continue delivering for residents, empower diverse communities</li>
+      </ul>
+
+      <h4>Headline pledges with numbers</h4>
+      <ul>
+        <li><strong>£388m</strong> into existing council housing 2026–30; 100% decent homes by 2030</li>
+        <li><strong>£58m</strong> further Right-to-Buy buyback</li>
+        <li>Maintain 50% affordable on new developments</li>
+        <li>WhatsApp repair reporting; named housing officers (max 550 residents each)</li>
+        <li><strong>72-hour</strong> pothole fix; <strong>£12m</strong> additional roads/pavement spend</li>
+        <li><strong>400</strong> new EV charging points by 2030; pension fund net-zero by 2035</li>
+        <li><strong>£1.9m</strong> Safer Communities fund; expand 24/7 patrols; "three strikes" on ASB</li>
+        <li><strong>1,000</strong> into work and <strong>1,000</strong> apprenticeships; 1/3 of contracts local by 2027</li>
+        <li>Universal free primary school meals; Year 7 device for every child</li>
+        <li>Multi-million Sobell Centre refurb; new Vorley Road library</li>
+        <li>"Islington In Touch" 10-day routine-request guarantee</li>
+      </ul>
+
+      <div class="quote">
+        Continue delivering for residents and empower diverse communities.
+        <span class="src">— Mission 5, Islington Labour 2026 manifesto</span>
+      </div>
+
+      <p><a href="research/parties/labour.md">Full Labour deep-dive →</a></p>
+    </div>
+  </details>
+
+  <details class="party" style="--c:var(--grn)">
+    <summary>
+      <div>
+        <h3>Green Party <span>· three priorities</span></h3>
+        <div class="meta">3 current seats · projected ~20 · main insurgent · full slate every ward</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <h4>Priorities</h4>
+      <ul>
+        <li>Homes for people, not profit</li>
+        <li>Making Islington affordable</li>
+        <li>Clean air, safe streets, healthy lives</li>
+      </ul>
+
+      <h4>Selected concrete commitments</h4>
+      <ul>
+        <li>Prioritise public and community-led housing (Community Land Trusts)</li>
+        <li>Stop building on community gardens, playgrounds, green space; brownfield-first</li>
+        <li>Council-housing retrofit programme (insulation, lower bills)</li>
+        <li>Borough-wide landlord licensing for all private rentals</li>
+        <li>Implement Mayor's Key Worker Living Rent in Islington; campaign for rent controls</li>
+        <li><strong>Scrap the green-waste collection charge</strong></li>
+        <li>Drastically reduce waste incineration; more recycling bins on streets and estates</li>
+        <li>Expand 'repair café' spaces and multiple 'Libraries of Things'</li>
+        <li><strong>Participatory budgeting</strong>; resident inclusion in scrutiny meetings</li>
+        <li>Full council divestment from oil &amp; gas and "those implicated in international aggression and war crimes"</li>
+        <li>Champion sanctuary policy; oppose overpolicing; evidence-based crime reduction</li>
+      </ul>
+
+      <div class="quote">
+        For the last twelve years one political party has dominated Islington Council… Too many council decisions are made behind closed doors, in Labour Party meetings, rather than openly in the council chamber.
+        <span class="src">— Cllr Benali Hamdache, Green Group Leader, manifesto foreword</span>
+      </div>
+
+      <p><a href="research/parties/greens.md">Full Green deep-dive →</a></p>
+    </div>
+  </details>
+
+  <details class="party" style="--c:var(--lib)">
+    <summary>
+      <div>
+        <h3>Liberal Democrats <span>· "Working for Islington"</span></h3>
+        <div class="meta">0 current seats · projected ~2 · 10 pledges building on 2022 manifesto</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <p>The 2026 piece is a deliberately tight 10-pledge document; the underlying policy is still the 2022 manifesto <em>Listening to Islington</em>, which the party "stand by".</p>
+
+      <h4>Headline 2026 themes</h4>
+      <ul>
+        <li><strong>1,000 new social rent homes</strong> on disused sites</li>
+        <li>Repair / replace all council lifts over <strong>30 years old</strong></li>
+        <li>Immediate fixes for ongoing heating, leaks, structural damage</li>
+        <li>Fund extra police; clampdown on moped and knife crime</li>
+        <li>Save police station counter services</li>
+        <li>Air pollution monitor at every primary school</li>
+        <li>Bike Hire Charter (pricing, parking, redistribution)</li>
+        <li>Reverse council fees for EU citizenship applications (oppose 33% hike)</li>
+      </ul>
+
+      <h4>Carried over from 2022</h4>
+      <ul>
+        <li>Never raise council tax above inflation</li>
+        <li>Citizens Assemblies in each LTN; no new LTNs without one</li>
+        <li>Re-open the Green Living Centre as a one-stop retrofit shop</li>
+        <li>Double tree count; 50+ new trees per ward per year</li>
+        <li>Step-free at every Islington station; £20 secure bike storage; cycle hangar on every street with 6+ requests</li>
+        <li>Diesel-free borough by 2030; oppose Edmonton incinerator</li>
+        <li>200 new council homes per year; review garage / car-park sites for housing</li>
+      </ul>
+
+      <p><a href="research/parties/lib-dems.md">Full Lib Dem deep-dive →</a></p>
+    </div>
+  </details>
+
+  <details class="party" style="--c:var(--con)">
+    <summary>
+      <div>
+        <h3>Conservatives <span>· eleven pledges</span></h3>
+        <div class="meta">0 current seats · projected ~5% · LTN-removal is the signature policy</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <h4>The eleven pledges</h4>
+      <ul>
+        <li><strong>Scrap all of Islington's LTNs</strong> (signature, "central" policy)</li>
+        <li>Cut Council Tax by 5%</li>
+        <li>End the Right-to-Buy buyback programme; reallocate budget to repairs of lifts, heating, CCTV</li>
+        <li>Insulate all council housing; solar on all new social housing</li>
+        <li>Cut affordable target on new developments from 50% to 35%</li>
+        <li>"Innocent until proven guilty" landlord enforcement; helpline for "accidental" landlords</li>
+        <li>"Bobbies on Bikes" patrol model; bleed kits on main streets</li>
+        <li>Use Government Safer Streets Fund for lighting and CCTV</li>
+        <li>Repurpose schools / community / leisure space for youth; "Your Future" careers from Y7</li>
+        <li>Smart-bin estate refuse collection; restore <strong>free bulky-item collection</strong></li>
+        <li>Free parking for less able-bodied residents; targeted business rate help</li>
+      </ul>
+
+      <h4>Tone</h4>
+      <ul>
+        <li>"Business-like" review of all council spending</li>
+        <li>Argues Islington's council tax is roughly 2× Wandsworth / Westminster</li>
+        <li>Argues £89m of own funds spent on Right-to-Buy buybacks "moves homes between categories" without adding stock</li>
+      </ul>
+
+      <p><a href="research/parties/conservatives.md">Full Conservative deep-dive →</a></p>
+    </div>
+  </details>
+
+  <details class="party" style="--c:var(--ici)">
+    <summary>
+      <div>
+        <h3>Islington Community Independents <span>· "for the Many"</span></h3>
+        <div class="meta">4 sitting cllrs (Labour defectors) · joint opposition with Greens · 8 candidates / 6 wards</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <p>Founded 2024 by four Labour defectors. Sits in the joint Independent &amp; Green Group as the official opposition. Phil Graham is their Bunhill candidate.</p>
+
+      <h4>Stated principles</h4>
+      <ul>
+        <li>"Proud socialists"; council run "with residents at its core"</li>
+        <li>Decisions made <em>by</em> communities, not <em>imposed on</em> them</li>
+        <li>Transparency, accountability, people before profit</li>
+      </ul>
+
+      <h4>Core policy themes</h4>
+      <ul>
+        <li>Safe, affordable housing; strong council housing</li>
+        <li>Anti-austerity; protect NHS; oppose two-child benefit cap</li>
+        <li>Participatory democracy; resident-led scrutiny</li>
+        <li>Borough of sanctuary; pro-migrant; explicit support for Palestinian rights</li>
+        <li>Access to culture; community safety with local accountability</li>
+      </ul>
+
+      <div class="note" style="margin-top:14px">
+        <strong>Caveat.</strong> ICI's full "People's Manifesto" PDF is referenced but was not retrievable in this research. Treat the policy themes above as directional, not a line-by-line manifesto.
+      </div>
+
+      <p><a href="research/parties/ici.md">Full ICI deep-dive →</a></p>
+    </div>
+  </details>
+
+  <details class="party" style="--c:var(--ref)">
+    <summary>
+      <div>
+        <h3>Reform UK <span>· no local manifesto</span></h3>
+        <div class="meta">0 current seats · projected ~8% · national policy applies</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <p>Reform UK have <strong>not</strong> issued a local Islington manifesto. Voters effectively get the national platform as proxy: hard-line on illegal immigration, large tax cuts, tougher criminal justice, rollback of net-zero policy, cost-of-living focus.</p>
+      <p>Local Reform candidates in Islington tend to overlap with Conservative campaign lines on council tax, LTNs and crime, while emphasising a "wasteful spending" narrative.</p>
+      <div class="note" style="margin-top:14px">
+        <strong>Caveat.</strong> Of the seven groupings on the Bunhill ballot, Reform UK has the <em>least transparent local platform</em>. No public local biographies for the Bunhill candidates were located.
+      </div>
+      <p><a href="research/parties/reform-uk.md">Full Reform deep-dive →</a></p>
+    </div>
+  </details>
+
+  <details class="party" style="--c:var(--sdp)">
+    <summary>
+      <div>
+        <h3>Social Democratic Party <span>· small ticket</span></h3>
+        <div class="meta">No local manifesto · national platform · single Bunhill candidate</div>
+      </div>
+      <div class="chev">Expand</div>
+    </summary>
+    <div class="body">
+      <p>The continuation of the post-1988 SDP, distinct from the original "Gang of Four" project. Positions itself as economically left and culturally communitarian — pro-NHS and public services, sceptical of mass immigration and identity politics, pro-PR.</p>
+      <p>Bunhill candidate Jake Painter is also the SDP's prospective parliamentary candidate for Islington South &amp; Finsbury.</p>
+      <p><a href="research/parties/sdp.md">Full SDP deep-dive →</a></p>
+    </div>
+  </details>
+</section>
+
+<!-- ============================================================ -->
+<!-- SCORECARD                                                    -->
+<!-- ============================================================ -->
+<section id="scorecard" data-reveal>
+  <div class="h-section">
+    <div class="num">§ IV — The record</div>
+    <h2>The incumbent's <em>report card</em></h2>
+  </div>
+  <p class="lead">Labour's 2022 platform was titled <em>Fairer, Safer, Greener Together</em>. Below: each major commitment graded against the public record. Methodology and per-row evidence in <a href="research/scorecard.md">research/scorecard.md</a>.</p>
+
+  <div class="report">
+    <div class="head">
+      <h3>Islington Labour <em>2022 → 2026</em></h3>
+      <div class="stamp">Examiner: this dossier<br/>Method: public sources only</div>
+    </div>
+    <div class="legend">
+      <span><b>✓</b> Largely delivered</span>
+      <span><b>~</b> Mixed / partial</span>
+      <span><b>✗</b> Not delivered or regressed</span>
+      <span><b>?</b> Insufficient public evidence</span>
+    </div>
+    <table class="score">
+      <thead><tr><th>2022 pledge</th><th>Grade</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>750 new council homes (within 1,550 affordable / social total)</td><td class="mark amber">~</td><td>"Largest programme in a generation" claimed; 392 social-rent delivered via planning since 2022. Greens contest the ratio (claim 18 private to 1 council in pipeline).</td></tr>
+        <tr><td>Buy back ex-Right-to-Buy homes</td><td class="mark green">✓</td><td>660 bought back since 2022; on track for 907 by March 2026.</td></tr>
+        <tr><td>£10m+/year on insulation / energy efficiency</td><td class="mark amber">~</td><td>Re-pledged in 2026 as £388m over 4 years; no audited cumulative total located for last term.</td></tr>
+        <tr><td>Improved housing repairs</td><td class="mark red">✗</td><td>Housing Ombudsman special report (Oct 2023): severe maladministration rate 24.7%, ~4× national average. 89 findings across 30 cases. Ongoing 2024–25 rulings continue to find delays. Council accepted all recommendations.</td></tr>
+        <tr><td>Crack down on housing fraud / illegal sub-letting</td><td class="mark green">✓</td><td>Continued enforcement; expanded again 2026.</td></tr>
+        <tr><td>Help residents downsize</td><td class="mark green">✓</td><td>Downsizing team operating; financial incentives.</td></tr>
+        <tr><td>Help 5,000 more people into good jobs</td><td class="mark gray">?</td><td>No audited delivery figure located. 2026 manifesto re-pledges only 1,000.</td></tr>
+        <tr><td>1,000 new apprenticeships</td><td class="mark amber">~</td><td>Restated and rolled forward in 2026.</td></tr>
+        <tr><td>Generous Council Tax Support scheme</td><td class="mark green">✓</td><td>£28m scheme covering ~24,500 households; expanded 2026/27 (terminal-illness extension).</td></tr>
+        <tr><td>Year 7 device for every child</td><td class="mark green">✓</td><td>Continues; re-pledged for 2026.</td></tr>
+        <tr><td>Universal free school meals (primary)</td><td class="mark green">✓</td><td>Operating; re-pledged 2026.</td></tr>
+        <tr><td>Net-zero borough goal (2030)</td><td class="mark amber">~</td><td>Long-term commitment maintained; pension fund net-zero target now pushed to 2035.</td></tr>
+        <tr><td>EV charging rollout</td><td class="mark green">✓</td><td>+400 by 2030.</td></tr>
+        <tr><td>LTNs for cleaner air</td><td class="mark amber">~</td><td>Implemented; politically contentious. Council conceded Blue Badge exemptions Jan 2026.</td></tr>
+        <tr><td>School Streets</td><td class="mark green">✓</td><td>Expanded.</td></tr>
+        <tr><td>Pothole / pavement repair</td><td class="mark amber">~</td><td>Restated as urgent in 2026 with new £12m and 72-hour pledge — implicit admission of falling short.</td></tr>
+        <tr><td>Crackdown on fly-tipping</td><td class="mark amber">~</td><td>FPNs issued; 48-hour removal target re-pledged for 2026.</td></tr>
+        <tr><td>Sound, balanced budget</td><td class="mark green">✓</td><td>Balanced budgets despite £10.8m savings required for 2024/25 alone.</td></tr>
+        <tr><td>In-source key services</td><td class="mark green">✓</td><td>Repairs back in-house; "in-source first" formally adopted.</td></tr>
+        <tr><td>Listening to residents</td><td class="mark red">✗</td><td>Both opposition groupings campaign on a perceived listening / democratic deficit; Housing Ombudsman flagged weak complaint promotion.</td></tr>
+      </tbody>
+    </table>
+    <div class="summary-quote">
+      <strong>Summary</strong> Labour can credibly point to housing supply, RTB buyback, schools, in-sourcing and a strong council-tax-support scheme. The clear, externally-validated weaknesses are housing repairs and complaint handling — and the heavy "fix repairs / 10-day guarantee / lift replacement" emphasis in the 2026 manifesto is itself an admission of where this term fell short.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- POLLING                                                      -->
+<!-- ============================================================ -->
+<section id="poll" data-reveal>
+  <div class="h-section">
+    <div class="num">§ V — The numbers</div>
+    <h2>Borough-wide vote share <em>2022 vs 2026</em></h2>
+  </div>
+  <p class="lead">Solid bar = 2022 actual. Faded bar = PollCheck's 2026 projection. Greens are the only party gaining ground; Labour, Conservatives projected to lose; Lib Dems holding; Reform new on the scoreboard.</p>
+
+  <div class="poll-grid">
+    <div class="poll-row" style="--c:var(--lab)">
+      <span class="name">Labour</span>
+      <span class="bars">
+        <span class="y26" style="width:54.7%; opacity:.16"></span>
+        <span class="y22" style="width:37%"></span>
+      </span>
+      <span class="num">2022 · 54.7%<br/><em>2026 · ~37%</em></span>
+    </div>
+    <div class="poll-row" style="--c:var(--grn)">
+      <span class="name">Green</span>
+      <span class="bars">
+        <span class="y26" style="width:34%; opacity:.18"></span>
+        <span class="y22" style="width:22%"></span>
+      </span>
+      <span class="num">2022 · 22.0%<br/><em>2026 · ~34%</em></span>
+    </div>
+    <div class="poll-row" style="--c:var(--lib)">
+      <span class="name">Lib Dem</span>
+      <span class="bars">
+        <span class="y26" style="width:13%; opacity:.18"></span>
+        <span class="y22" style="width:11.8%"></span>
+      </span>
+      <span class="num">2022 · 11.8%<br/><em>2026 · ~13%</em></span>
+    </div>
+    <div class="poll-row" style="--c:var(--ref)">
+      <span class="name">Reform</span>
+      <span class="bars">
+        <span class="y26" style="width:7.9%; opacity:.18"></span>
+        <span class="y22" style="width:0%"></span>
+      </span>
+      <span class="num">2022 · —<br/><em>2026 · ~7.9%</em></span>
+    </div>
+    <div class="poll-row" style="--c:var(--con)">
+      <span class="name">Conservative</span>
+      <span class="bars">
+        <span class="y26" style="width:11.2%; opacity:.18"></span>
+        <span class="y22" style="width:5.2%"></span>
+      </span>
+      <span class="num">2022 · 11.2%<br/><em>2026 · ~5.2%</em></span>
+    </div>
+    <div class="poll-legend">
+      <span><i></i>2022 actual vote share</span>
+      <span><i class="faded"></i>2026 projection (PollCheck)</span>
+    </div>
+  </div>
+
+  <p style="margin-top:18px; color:var(--ink-soft); font-size:14.5px;">
+    Central seat estimate: Labour 28 (down 16), Greens 20 (up 17), Lib Dems 2 (up 2). PollCheck's most competitive wards are Tollington, Barnsbury, St Peter's &amp; Canalside, Canonbury and Clerkenwell. Bunhill is not flagged as a marginal — Labour favourite to retain — but a 30.3% turnout makes it volatile to small swings.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHERE TO VOTE                                                -->
+<!-- ============================================================ -->
+<section id="where" data-reveal>
+  <div class="h-section">
+    <div class="num">§ VI — The polling stations</div>
+    <h2>Where you actually <em>vote</em></h2>
+  </div>
+  <p class="lead">Three polling stations serve Bunhill ward. Polls open 07:00, close 22:00 sharp. <strong>Photo ID is required.</strong> Your poll card tells you which station — they're assigned by register range.</p>
+
+  <div class="stations">
+    <div class="st">
+      <div class="num">①</div>
+      <h4>Vibast Community Centre</h4>
+      <p>167 Old Street, London<br/>Registers SBUA-1 to SBUA-3361</p>
+    </div>
+    <div class="st">
+      <div class="num">②</div>
+      <h4>Tompion Hall Community Centre</h4>
+      <p>40 Percival Street, London<br/>Register SBUB</p>
+    </div>
+    <div class="st">
+      <div class="num">③</div>
+      <h4>St Luke's Community Centre</h4>
+      <p>90 Central Street, London<br/>Register SBUC</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Accepted ID</strong> includes UK passport, UK / EEA driving licence, Older Person's bus pass, Blue Badge, biometric immigration document and the free Voter Authority Certificate. If yours has expired, it can still be accepted as long as you are still recognisable from the photograph.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SOURCES                                                      -->
+<!-- ============================================================ -->
+<section id="sources" data-reveal>
+  <div class="h-section">
+    <div class="num">§ VII — The receipts</div>
+    <h2>Where it all <em>came from</em></h2>
+  </div>
+  <p class="lead">This guide is built only from publicly accessible material. Where a claim is contested, both sides are noted in the long-form research. Full source list and methodology in <a href="research/sources.md">research/sources.md</a>.</p>
+
+  <ol class="src-list">
+    <li><a href="https://www.islington.gov.uk/about-the-council/voting-and-elections/local-election-2026/local-council-elections-candidates">Islington Council — official 2026 candidate list (PDFs per ward)</a></li>
+    <li><a href="https://www.islington.gov.uk/~/media/sharepoint-lists/public-records/democracy/information/adviceandinformation/20252026/bunhill.pdf">Statement of Persons Nominated, Bunhill ward (10 Apr 2026)</a></li>
+    <li><a href="https://islington-labour.org.uk/islington-labours-2026-manifesto/">Labour 2026 manifesto</a></li>
+    <li><a href="https://islington.greenparty.org.uk/manifesto/">Green Party 2026 manifesto</a></li>
+    <li><a href="https://www.islingtonlibdem.com/news/article/2026-local-election-pledges-to-you">Lib Dem 2026 pledges</a></li>
+    <li><a href="https://www.islingtonconservatives.com/news/islington-conservatives-manifesto-0">Conservative 2026 manifesto</a></li>
+    <li><a href="https://islingtonindependents.org/">Islington Community Independents</a></li>
+    <li><a href="https://www.housing-ombudsman.org.uk/2023/10/24/special-report-on-islington-council/">Housing Ombudsman special report on Islington (Oct 2023)</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/2026_Islington_London_Borough_Council_election">Wikipedia — 2026 Islington council election</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Bunhill_(ward)">Wikipedia — Bunhill ward</a></li>
+    <li><a href="https://www.pollcheck.co.uk/council-projections/islington/">PollCheck — Islington seat projections</a></li>
+    <li><a href="https://www.islingtontribune.co.uk/article/islingon-council-elections-2026-full-list-of-candidates">Islington Tribune — full candidate list</a></li>
+    <li><a href="https://www.nwlondoner.co.uk/news/05052026-islington-election-2026-what-you-need-to-know-before-7-may">NW Londoner — election explainer</a></li>
+    <li><a href="https://www.islingtongazette.co.uk/news/local-council/islington-elections-liberal-democrats-pledge-extra-cops-more-social-housing-3791332">Islington Gazette — Lib Dem pledges</a></li>
+    <li><a href="https://www.islingtontribune.co.uk/article/im%E2%80%88quitting%E2%80%88labour">Islington Tribune — Phil Graham quits Labour (25 Jul 2024)</a></li>
+    <li><a href="https://democracy.islington.gov.uk/mgUserInfo.aspx?UID=346">Cllr Phil Graham profile (council democracy site)</a></li>
+    <li><a href="https://www.islington.gov.uk/about-the-council/who-we-are/leader-of-the-council-cllr-una-ohalloran">Cllr Una O'Halloran — Council Leader (since Nov 2024)</a></li>
+    <li><a href="https://democracyclub.org.uk/blog/2026/04/30/candidates-and-manifestos-in-the-2026-local-and-devolved-elections/">Democracy Club — 2026 manifestos roundup</a></li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- IMPRINT                                                      -->
+<!-- ============================================================ -->
+<footer class="imprint">
+  <div class="row">
+    <div>
+      <h4>How to use this</h4>
+      <p>Read the candidate cards. Open the party blocks for the policy detail you care about. Read the scorecard for the incumbent's record. Then check sources directly — never just take a single explainer at face value.</p>
+      <p>This brief takes no political position. Every party gets the same template, the same depth where information is available, and the same scrutiny. Where information is genuinely missing, that gap is stated rather than papered over.</p>
+    </div>
+    <div>
+      <h4>Imprint</h4>
+      <p>Compiled from public sources only. Built locally as a single static page paired with a folder of research markdown.</p>
+      <p>Treat the scorecard as one researcher's reading, not a verdict. Verify before you vote.</p>
+      <div class="sig">— Bunhill voter brief, May 2026</div>
+    </div>
+  </div>
+</footer>
+
+</div></div>
+
+<script>
+  // candidate filter
+  const bar = document.getElementById('filterbar');
+  const cards = [...document.querySelectorAll('#cards .card')];
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.pill');
+    if (!btn) return;
+    [...bar.querySelectorAll('.pill')].forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const want = btn.dataset.party;
+    cards.forEach(c => {
+      const match = (want === 'all') || (c.dataset.party === want);
+      c.classList.toggle('hidden', !match);
+    });
+  });
+
+  // smooth toc scroll offset
+  document.querySelectorAll('nav.toc a').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  // intersection-driven reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '-10% 0px -10% 0px', threshold: 0 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
